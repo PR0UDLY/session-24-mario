@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mushroom Kingdom Engine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="game-container">
+    <div class="ui-panel">
+      <h1>MUSHROOM KINGDOM ENGINE</h1>
+      <div class="stats">
+        <div>SCORE: <span id="score">000000</span></div>
+        <div>STATUS: <span id="status">IDLE</span></div>
+      </div>
+      <button id="start-btn">START SIMULATION</button>
+      <div id="error-log">Waiting for core-logic...</div>
+    </div>
+    
+    <div class="viewport" id="viewport">
+      <div class="ground"></div>
+      <div id="player" class="entity player" style="left: 50px;"></div>
+    </div>
+  </div>
+
+  <script src="core-logic.js"></script>
+  <script src="engine.js"></script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: #fff;
+}
+
+.game-container {
+  width: 100vw;
+  height: 100vh;
+  background-color: #222;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.ui-panel {
+  padding: 20px;
+  background: linear-gradient(180deg, #181818 0%, #111 100%);
+  border-bottom: 4px solid #fff;
+  text-align: center;
+}
+
+h1 {
+  color: #ff3333;
+  text-shadow: 2px 2px 0 #fff;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+  box-shadow: 4px 4px 0 #000;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(2px);
+  box-shadow: 2px 2px 0 #000;
+}
+
+#error-log {
+  margin-top: 15px;
+  color: #ffaa00;
+  font-size: 14px;
+  min-height: 20px;
+}
+
+.viewport {
+  position: relative;
+  flex-grow: 1;
+  width: 100%;
+  background-color: #5c94fc; /* Mario sky blue */
+  overflow: hidden;
+}
+
+.ground {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #c84c0c;
+  border-top: 4px solid #000;
+  background-image: linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000), 
+                    linear-gradient(45deg, #000 25%, transparent 25%, transparent 75%, #000 75%, #000);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.entity {
+  position: absolute;
+  bottom: 60px; /* sit exactly on ground */
+  width: 40px;
+  height: 40px;
+  background-size: cover;
+  background-position: center;
+  image-rendering: pixelated;
+  transition: bottom 0.2s; /* for jumping */
+}
+
+.player {
+  background-image: url('image/mario.png');
+  z-index: 10;
+  transition: none; /* Let JS handle smooth animation frame-by-frame */
+}
+
+.enemy {
+  background-image: url('image/goomba.png');
+}
+
+.coin {
+  background-image: url('image/coin.png');
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.1); }
+  100% { transform: scaleX(1); }
+}
+
+.jump {
+  bottom: 140px !important;
+}
+
+.platform {
+  position: absolute;
+  height: 20px;
+  background-color: #fce4a0;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.2);
+  z-index: 5;
+  background-image: linear-gradient(90deg, #000 2px, transparent 2px);
+  background-size: 25px 100%;
+}
+
+.damage-flash {
+  filter: brightness(0) invert(1) !important;
+  transform: scale(3) rotate(720deg) !important;
+  transition: all 1s ease-out !important;
+  opacity: 0;
+}
+
+.dead {
+  transform: translateY(-50px) rotate(180deg);
+  opacity: 0;
+  transition: all 0.4s ease-in;
+}
